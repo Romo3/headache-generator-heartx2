@@ -1,0 +1,189 @@
+:root {
+    --white: rgb(255,255,255);
+    --black: rgb(0, 0, 0);
+    --main: rgb(145, 250, 215);
+    --main2: #f75d6c;
+    --main3: whitesmoke;
+}
+
+.navmenu {
+    background-color: var(--black);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, .submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul:before,ul:after {
+    content: "";
+    display: table;
+}
+
+ul:after {
+    clear: both;
+}
+
+ul {
+    margin: 50px auto;
+    width: fit-content;
+}
+
+ul li {
+    background-color: var(--main3);
+    float: left;
+    position: relative;
+    transform: skewX(25deg);
+}
+
+ul li a {
+    display: block;
+    color: var(--black);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    transform: skewX(-25deg);
+    padding: 1em 2em;
+}
+
+ul li:hover {
+    background-color: var(--main);
+}
+
+.submenu {
+    position: absolute;
+    width: 100px;
+    left: 80%;
+    margin-left: -100px;
+    transform: skewX(-25deg);
+    transform-origin: left top;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.submenu li{
+    background-color: var(--main);
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease transform;
+}
+
+.submenu li a {
+    padding: 1em 2em;
+}
+
+.submenu li:after {
+    content: "";
+    position: absolute;
+    top: 125%;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 300px var(--black);
+}
+
+.submenu li:nth-child(odd) {
+    transform: skewX(-25deg) translateX(0);
+}
+.submenu li:nth-child(odd):after {
+    right: 50%;
+    transform: skewX(-25deg) rotate(3deg);
+}
+.submenu li:nth-child(odd) a {
+    transform: skewX(25deg);
+}
+
+.submenu li:nth-child(even) {
+    transform: skewX(25deg) translateX(0);
+}
+.submenu li:nth-child(even):after {
+    left: 50%;
+    transform: skewX(25deg) rotate(3deg);
+}
+.submenu li:nth-child(even) a {
+    transform: skewX(-25deg);
+}
+ul li:hover .submenu{
+    opacity: 1;
+    visibility: visible;
+}
+ul li:hover .submenu li:nth-child(even){
+    transform: skewX(25deg)translate(15px);
+}
+ul li:hover .submenu li:nth-child(odd){
+    transform: skewX(-25deg)translate(-15px);
+}
+/* main menu test styles */
+
+.mainmenu::after, .mainmenu::before {
+    border: 3px solid var(--black);
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3 ease;
+}
+
+/* button styles */
+
+.dropmenu::after, .dropmenu::before {
+    border: 3px solid var(--black);
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3 ease;
+}
+
+.dropmenu:hover::after {
+    transform: translate(-10px, -10px);
+}
+
+.dropmenu:hover::before {
+    transform: translate(-5px, -5px);
+}
+
+/* card styles */
+.card1container::before, .card1container::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.card1container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.card1 {
+    width: 400px;
+}
+
+.card1content {
+    text-align: center;
+    position: relative;
+    padding: 5em;
+    transition: transform 3s;
+    background: pink;
+}
+
+.card1:hover .card1content {
+    transform: rotateY(.5turn);
+}
+
+.card1front,
+.card1back {
+    position: relative;
+}
+
