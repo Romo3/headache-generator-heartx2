@@ -19,8 +19,8 @@ body {
     background: rgb(255, 249, 249)
 }
 .navcontainer {
-    margin: 3rem;
-    padding: 3rem;
+    margin: 4rem;
+    padding: 4rem;
 }
 .navmenu {
     background-color: var(--black);
