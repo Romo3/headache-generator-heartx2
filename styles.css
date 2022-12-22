@@ -1,11 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Kenia&display=swap');
+
+
 :root {
+/*colors*/
+
     --white: rgb(255,255,255);
     --black: rgb(0, 0, 0);
     --main: rgb(145, 250, 215);
     --main2: #f75d6c;
     --main3: whitesmoke;
-}
 
+/*card vars*/
+
+
+
+}
+body {
+    background: rgb(255, 249, 249)
+}
+.navcontainer {
+    margin: 3rem;
+    padding: 3rem;
+}
 .navmenu {
     background-color: var(--black);
 }
@@ -132,6 +148,129 @@ ul li:hover .submenu li:nth-child(odd){
     transition: transform 0.3 ease;
 }
 
+/*chapters drop down*/
+
+.navmenu {
+    background-color: var(--black);
+}
+
+ul, .chapmenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul:before,ul:after {
+    content: "";
+    display: table;
+}
+
+ul:after {
+    clear: both;
+}
+
+ul {
+    margin: 50px auto;
+    width: fit-content;
+}
+
+ul li {
+    background-color: var(--main3);
+    float: left;
+    position: relative;
+    transform: skewX(25deg);
+}
+
+ul li a {
+    display: block;
+    color: var(--black);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    transform: skewX(-25deg);
+    padding: 1em 2em;
+}
+
+ul li:hover {
+    background-color: var(--main);
+}
+
+.chapmenu {
+    position: absolute;
+    width: 100px;
+    left: 80%;
+    margin-left: -100px;
+    transform: skewX(-25deg);
+    transform-origin: left top;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.chapmenu li{
+    background-color: var(--main);
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease transform;
+}
+
+.chapmenu li a {
+    padding: 1em 2em;
+}
+
+.chapmenu li:after {
+    content: "";
+    position: absolute;
+    top: 125%;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 300px var(--black);
+}
+
+.chapmenu li:nth-child(odd) {
+    transform: skewX(-25deg) translateX(0);
+}
+.chapmenu li:nth-child(odd):after {
+    right: 50%;
+    transform: skewX(-25deg) rotate(3deg);
+}
+.chapmenu li:nth-child(odd) a {
+    transform: skewX(25deg);
+}
+
+.chapmenu li:nth-child(even) {
+    transform: skewX(25deg) translateX(0);
+}
+.chapmenu li:nth-child(even):after {
+    left: 50%;
+    transform: skewX(25deg) rotate(3deg);
+}
+.chapmenu li:nth-child(even) a {
+    transform: skewX(-25deg);
+}
+ul li:hover .chapmenu{
+    opacity: 1;
+    visibility: visible;
+}
+ul li:hover .chapmenu li:nth-child(even){
+    transform: skewX(25deg)translate(15px);
+}
+ul li:hover .chapmenu li:nth-child(odd){
+    transform: skewX(-25deg)translate(-15px);
+}
+/* main menu test styles */
+
+.mainmenu::after, .mainmenu::before {
+    border: 3px solid var(--black);
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3 ease;
+}
+
 /* button styles */
 
 .dropmenu::after, .dropmenu::before {
@@ -154,6 +293,8 @@ ul li:hover .submenu li:nth-child(odd){
     transform: translate(-5px, -5px);
 }
 
+
+
 /* card styles */
 .card1container::before, .card1container::after {
     box-sizing: border-box;
@@ -161,21 +302,24 @@ ul li:hover .submenu li:nth-child(odd){
 }
 
 .card1container {
-    height: 100vh;
+    height: 170vh;
     display: grid;
     place-items: center;
 }
 
 .card1 {
-    width: 400px;
+    width: 450px;
+    position: relative;
 }
 
 .card1content {
     text-align: center;
     position: relative;
     padding: 5em;
-    transition: transform 3s;
+    transition: transform 2s;
     background: pink;
+    transform-style: preserve-3d;
+    font-family: 'Kenia', cursive;
 }
 
 .card1:hover .card1content {
@@ -184,6 +328,37 @@ ul li:hover .submenu li:nth-child(odd){
 
 .card1front,
 .card1back {
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2em;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
 }
 
+.card1front {
+    background: var(--main);
+
+}
+
+.card1title {
+    font-size: 3rem;
+    transform: translateZ(9rem);
+}
+
+.subtitle {
+    transform: translateZ(5rem);
+    transform-style: preserve-3d;
+}
+
+.card1body {
+    transform: translateZ(6rem);
+}
+
+
+.card1back {
+    transform: rotateY(.5turn);
+    background: rgb(145, 211, 237);
+}
