@@ -7,7 +7,7 @@
     --white: rgb(255,255,255);
     --black: rgb(0, 0, 0);
     --main: rgb(145, 250, 215);
-    --main2: #f75d6c;
+    --main2: #ff98a3;
     --main3: whitesmoke;
 
 /*card vars*/
@@ -15,12 +15,19 @@
 
 
 }
+.logo {
+    margin: 25px;
+    padding: 25px;
+    width: 10rem;
+    height: 10rem;
+}
+
 body {
-    background: rgb(255, 249, 249)
+    background: white;
 }
 .navcontainer {
-    margin: 4rem;
-    padding: 4rem;
+    margin: 1rem;
+    padding: 1rem;
 }
 .navmenu {
     background-color: var(--black);
@@ -30,6 +37,8 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* inheritors drop down */
 
 ul, .submenu {
     margin: 0;
@@ -134,18 +143,111 @@ ul li:hover .submenu li:nth-child(even){
 ul li:hover .submenu li:nth-child(odd){
     transform: skewX(-25deg)translate(-15px);
 }
-/* main menu test styles */
 
-.mainmenu::after, .mainmenu::before {
-    border: 3px solid var(--black);
+/* world menu drop downs*/
+
+ul, .worldmenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul:before,ul:after {
+    content: "";
+    display: table;
+}
+
+ul:after {
+    clear: both;
+}
+
+ul {
+    margin: 50px auto;
+    width: fit-content;
+}
+
+ul li {
+    background-color: var(--main3);
+    float: left;
+    position: relative;
+    transform: skewX(25deg);
+}
+
+ul li a {
+    display: block;
+    color: var(--black);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    transform: skewX(-25deg);
+    padding: 1em 2em;
+}
+
+ul li:hover {
+    background-color: var(--main);
+}
+
+.worldmenu {
+    position: absolute;
+    width: 100px;
+    left: 80%;
+    margin-left: -100px;
+    transform: skewX(-25deg);
+    transform-origin: left top;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.worldmenu li{
+    background-color: var(--main);
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease transform;
+}
+
+.worldmenu li a {
+    padding: 1em 2em;
+}
+
+.worldmenu li:after {
     content: "";
     position: absolute;
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: transform 0.3 ease;
+    top: 125%;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 300px var(--black);
+}
+
+.worldmenu li:nth-child(odd) {
+    transform: skewX(-25deg) translateX(0);
+}
+.worldmenu li:nth-child(odd):after {
+    right: 50%;
+    transform: skewX(-25deg) rotate(3deg);
+}
+.worldmenu li:nth-child(odd) a {
+    transform: skewX(25deg);
+}
+
+.worldmenu li:nth-child(even) {
+    transform: skewX(25deg) translateX(0);
+}
+.worldmenu li:nth-child(even):after {
+    left: 50%;
+    transform: skewX(25deg) rotate(3deg);
+}
+.worldmenu li:nth-child(even) a {
+    transform: skewX(-25deg);
+}
+ul li:hover .worldmenu{
+    opacity: 1;
+    visibility: visible;
+}
+ul li:hover .worldmenu li:nth-child(even){
+    transform: skewX(25deg)translate(15px);
+}
+ul li:hover .worldmenu li:nth-child(odd){
+    transform: skewX(-25deg)translate(-15px);
 }
 
 /*chapters drop down*/
@@ -271,6 +373,28 @@ ul li:hover .chapmenu li:nth-child(odd){
     transition: transform 0.3 ease;
 }
 
+.mainmenuau::after, .mainmenuau::before {
+    border: 3px solid var(--black);
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3 ease;
+}
+.mainmenuau {
+    color: black;
+}
+
+.mainmenuau:hover {
+    background: var(--main2);
+    text-decoration-color: white;
+    text-decoration: underline;
+    text-decoration-color: var(--main2);
+}
+
 /* button styles */
 
 .dropmenu::after, .dropmenu::before {
@@ -296,13 +420,18 @@ ul li:hover .chapmenu li:nth-child(odd){
 
 
 /* card styles */
+
+.card1back {
+    line-height: 1.5;
+}
+
 .card1container::before, .card1container::after {
     box-sizing: border-box;
     margin: 0;
 }
 
 .card1container {
-    height: 170vh;
+    height: 150vh;
     display: grid;
     place-items: center;
 }
